@@ -4,13 +4,13 @@ locals {
   enable_ipam = length(local.config_l0) > 0 ? 1 : 0
 
   // If no regions are specified, use current
-  ipam_regions = coalesce(var.ipam_regions, [
+  ipam_regions = coalesce(var.regions, [
     data.aws_region.current.name,
   ])
 
   // Root level normalised pool
   config_l0 = {
-    for k, v in var.ipam_ipv4_root_pools :
+    for k, v in var.ipv4_root_pools :
     k => merge(v, {
       // Use key as description if none explicitly set
       description = coalesce(v.description, k)
@@ -19,7 +19,7 @@ locals {
 
   // Regional level normalised pool
   config_l1 = {
-    for k, v in var.ipam_ipv4_regional_pools :
+    for k, v in var.ipv4_regional_pools :
     k => merge(v, {
       // Use key as description if none explicitly set
       description = join("/", [
@@ -34,7 +34,7 @@ locals {
 
   // organisational until level normalised pool
   config_l2 = {
-    for k, v in var.ipam_ipv4_ou_pools :
+    for k, v in var.ipv4_ou_pools :
     k => merge(v, {
       // Use key as description if none explicitly set
       description = join("/", [
@@ -46,9 +46,4 @@ locals {
       locale = coalesce(local.config_l1[v.parent].locale, v.locale, "")
     })
   }
-}
-
-// Transit gateway specific locals
-locals {
-
 }

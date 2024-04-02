@@ -6,17 +6,17 @@ run "basic" {
   command = plan
 
   variables {
-    ipam_name        = "test"
-    ipam_description = "test IPAM module instance"
+    name        = "test"
+    description = "test IPAM module instance"
 
     // List of operating regions for this IPAM
-    ipam_regions = [
+    regions = [
       "eu-west-1",
       "eu-west-2",
     ]
 
     // Configure root IPAM pools
-    ipam_ipv4_root_pools = {
+    ipv4_root_pools = {
       core = {
         cidr        = "10.0.0.0/8"
         description = "Core network IPv4 allocation pool"
@@ -24,7 +24,7 @@ run "basic" {
     }
 
     // Configure region IPAM pools
-    ipam_ipv4_regional_pools = {
+    ipv4_regional_pools = {
       eu-west-1 = {
         parent         = "core"
         netmask_length = 15
@@ -39,7 +39,7 @@ run "basic" {
     }
 
     // Configure workload level IPAM pools
-    ipam_ipv4_ou_pools = {
+    ipv4_ou_pools = {
       operations = {
         parent      = "eu-west-2"
         cidr        = "10.128.0.0/17"
@@ -90,8 +90,5 @@ run "basic" {
         ]
       }
     }
-
-    tgw_name        = "gateway"
-    tgw_description = "Core network transit gateway"
   }
 }

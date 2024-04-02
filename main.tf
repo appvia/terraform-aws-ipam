@@ -1,7 +1,7 @@
 resource "aws_vpc_ipam" "this" {
   count = local.enable_ipam
 
-  description = coalesce(var.ipam_description, format("IPAM with primary in %s", data.aws_region.current.name))
+  description = coalesce(var.description, format("IPAM with primary in %s", data.aws_region.current.name))
 
   dynamic "operating_regions" {
     for_each = local.ipam_regions
@@ -11,8 +11,8 @@ resource "aws_vpc_ipam" "this" {
     }
   }
 
-  tags = merge(var.tags, var.ipam_tags, {
-    Name = coalesce(var.ipam_name, data.aws_region.current.name)
+  tags = merge(var.tags, {
+    Name = coalesce(var.name, data.aws_region.current.name)
   })
 }
 

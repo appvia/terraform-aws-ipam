@@ -78,5 +78,13 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_arn"></a> [arn](#output\_arn) | ARN of the VPC IPAM |
+| <a name="output_ou_pools"></a> [ou\_pools](#output\_ou\_pools) | Map of OU IPAM pools |
+| <a name="output_ou_shares"></a> [ou\_shares](#output\_ou\_shares) | Map of RAM shares for OU IPAM pools |
+| <a name="output_regional_pools"></a> [regional\_pools](#output\_regional\_pools) | Map of regional IPAM pools |
+| <a name="output_regional_shares"></a> [regional\_shares](#output\_regional\_shares) | Map of RAM shares for regional IPAM pools |
+| <a name="output_root_pools"></a> [root\_pools](#output\_root\_pools) | Map of root IPAM pools |
+| <a name="output_root_shares"></a> [root\_shares](#output\_root\_shares) | Map of RAM shares for root IPAM pools |
 <!-- END_TF_DOCS -->

@@ -46,7 +46,7 @@ run "basic" {
         description = "Operations"
 
         ram_share_principals = [
-          "abc-123",
+          "arn:aws:organizations::009151033531:organization/o-l0pd2fg8bu",
         ]
       }
 
@@ -56,7 +56,7 @@ run "basic" {
         description = "Development"
 
         ram_share_principals = [
-          "abc-234",
+          "arn:aws:organizations::009151033531:organization/o-l0pd2fg8bu",
         ]
       }
 
@@ -66,7 +66,7 @@ run "basic" {
         description = "Production"
 
         ram_share_principals = [
-          "abc-345",
+          "arn:aws:organizations::009151033531:organization/o-l0pd2fg8bu",
         ]
       }
 
@@ -76,7 +76,7 @@ run "basic" {
         description = "Sandbox"
 
         ram_share_principals = [
-          "abc-456",
+          "arn:aws:organizations::009151033531:organization/o-l0pd2fg8bu",
         ]
       }
 
@@ -86,7 +86,7 @@ run "basic" {
         description = "Staging"
 
         ram_share_principals = [
-          "abc-567",
+          "arn:aws:organizations::009151033531:organization/o-l0pd2fg8bu",
         ]
       }
     }

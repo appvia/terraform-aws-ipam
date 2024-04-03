@@ -1,17 +1,17 @@
-// IPAM specific locals
+# IPAM specific locals
 locals {
-  // If no regions are specified, use current
+  # If no regions are specified, use current
   ipam_regions = coalesce(var.regions, [
     data.aws_region.current.name,
   ])
 
-  // Root level normalised pool
+  # Root level normalised pool
   config_l0 = {
     for k, v in var.ipv4_root_pools :
     k => merge(v, {
-      // Set the name to the map key
+      # Set the name to the map key
       name = k
-      // Use key as description if none explicitly set
+      # Use key as description if none explicitly set
       description = coalesce(v.description, k)
     })
   }
@@ -26,23 +26,23 @@ locals {
     }
   ]...)
 
-  // Regional level normalised pool
+  # Regional level normalised pool
   config_l1 = {
     for k, v in var.ipv4_regional_pools :
     k => merge(v, {
-      // Join the name with the parent name
+      # Join the name with the parent name
       name = join("-", [
         local.config_l0[v.parent].name,
         k
       ])
 
-      // Use key as description if none explicitly set
+      # Use key as description if none explicitly set
       description = join("/", [
         local.config_l0[v.parent].description,
         coalesce(v.description, k),
       ])
 
-      // Set the locale to the parent locale by default
+      # Set the locale to the parent locale by default
       locale = coalesce(local.config_l0[v.parent].locale, v.locale, "")
     })
   }
@@ -57,23 +57,23 @@ locals {
     }
   ]...)
 
-  // organisational until level normalised pool
+  # organisational until level normalised pool
   config_l2 = {
     for k, v in var.ipv4_ou_pools :
     k => merge(v, {
-      // Join the name with the parent name
+      # Join the name with the parent name
       name = join("-", [
         local.config_l1[v.parent].name,
         k
       ])
 
-      // Use key as description if none explicitly set
+      # Use key as description if none explicitly set
       description = join("/", [
         local.config_l1[v.parent].description,
         coalesce(v.description, k),
       ])
 
-      // Set the locale to the parent locale by default
+      # Set the locale to the parent locale by default
       locale = coalesce(local.config_l1[v.parent].locale, v.locale, "")
     })
   }

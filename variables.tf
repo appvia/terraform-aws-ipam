@@ -1,16 +1,19 @@
 variable "name" {
-  type    = string
-  default = null
+  type        = string
+  default     = null
+  description = "Name of the IPAM configuration"
 }
 
 variable "description" {
-  type    = string
-  default = null
+  type        = string
+  default     = null
+  description = "Description of the IPAM configuration"
 }
 
 variable "regions" {
-  type    = list(string)
-  default = null
+  type        = list(string)
+  default     = null
+  description = "List of regions the IPAM will operate in"
 }
 
 variable "ipv4_root_pools" {
@@ -72,6 +75,7 @@ variable "ipv4_ou_pools" {
 }
 
 variable "tags" {
-  type    = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
+  description = "Map of tags to apply to all resources"
 }

@@ -1,8 +1,5 @@
 // IPAM specific locals
 locals {
-  // Whether to enable IPAM
-  enable_ipam = length(local.config_l0) > 0 ? 1 : 0
-
   // If no regions are specified, use current
   ipam_regions = coalesce(var.regions, [
     data.aws_region.current.name,

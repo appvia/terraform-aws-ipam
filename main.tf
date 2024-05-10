@@ -1,3 +1,5 @@
+
+## Privision an IPAM with a root pool, regional pools, and organizational unit pools
 resource "aws_vpc_ipam" "this" {
   description = coalesce(var.description, format("IPAM with primary in %s", data.aws_region.current.name))
 
@@ -14,6 +16,7 @@ resource "aws_vpc_ipam" "this" {
   })
 }
 
+## Define the IPAM root
 resource "aws_vpc_ipam_pool" "ipv4_root" {
   for_each = local.config_l0
 

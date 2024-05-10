@@ -1,4 +1,4 @@
-# IPAM specific locals
+
 locals {
   # If no regions are specified, use current
   ipam_regions = coalesce(var.regions, [

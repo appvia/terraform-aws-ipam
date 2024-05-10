@@ -1,6 +1,6 @@
 ![Github Actions](../../actions/workflows/terraform.yml/badge.svg)
 
-# Terraform AWS IPAM
+# Terraform AWS IPAM Module
 
 ## Description
 

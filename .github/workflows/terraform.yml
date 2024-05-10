@@ -19,5 +19,5 @@ jobs:
     with:
       enable-terraform-tests-credentials: true
       terraform-tests-aws-role: arn:aws:iam::503440911135:role/terraform-aws-ci-ro
-      terraform-tests-region: eu-west-2
+      terraform-tests-aws-region: eu-west-2
       working-directory: .

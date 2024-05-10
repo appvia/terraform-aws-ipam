@@ -17,5 +17,7 @@ jobs:
     uses: appvia/appvia-cicd-workflows/.github/workflows/terraform-module-validation.yml@main
     name: Module Validation
     with:
-      enable-terraform-tests: false
+      enable-terraform-tests-credentials: true
+      terraform-tests-aws-role: arn:aws:iam::503440911135:role/terraform-aws-ci-ro
+      terraform-tests-region: eu-west-2
       working-directory: .

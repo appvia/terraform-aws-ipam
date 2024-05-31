@@ -13,9 +13,45 @@ Add example usage here
 ```hcl
 module "example" {
   source  = "appvia/ipam/aws"
-  version = "0.0.1"
+  version = "1.0.0"
 
-  # insert variables here
+  name        = "core"
+  description = "Core IPAM network"
+
+  # List of operating regions for this IPAM
+  regions = [
+    "eu-west-2",
+  ]
+
+  # Configure root IPAM pools
+  ipv4_root_pools = {
+    core = {
+      cidr        = "10.0.0.0/8"
+      description = "Core network IPv4 allocation pool"
+    }
+  }
+
+  # Configure region IPAM pools
+  ipv4_regional_pools = {
+    eu-west-2 = {
+      parent         = "core"
+      netmask_length = 8
+      locale         = "eu-west-2"
+    }
+  }
+
+  # Configure workload level IPAM pools
+  ipv4_ou_pools = {
+    production = {
+      parent      = "eu-west-2"
+      cidr        = "10.0.0.0/16"
+      description = "Production"
+
+      ram_share_principals = [
+        "arn:aws:organizations::012345678910:organization/o-skf6elds82",
+      ]
+    }
+  }
 }
 ```
 

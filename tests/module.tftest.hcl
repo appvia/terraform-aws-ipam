@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "eu-west-2"
-}
+mock_provider "aws" {}
 
 run "basic" {
   command = plan

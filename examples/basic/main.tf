@@ -1,6 +1,5 @@
 module "ipam_core" {
-  source  = "appvia/ipam/aws"
-  version = "1.0.0"
+  source = "../../"
 
   name        = "core"
   description = "Core IPAM network"

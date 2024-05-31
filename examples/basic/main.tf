@@ -1,5 +1,5 @@
 module "ipam_core" {
-  source  = "../../"
+  source = "../../"
 
   name        = "core"
   description = "Core IPAM network"

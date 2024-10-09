@@ -14,7 +14,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_ipam_core"></a> [ipam\_core](#module\_ipam\_core) | appvia/ipam/aws | 1.0.0 |
+| <a name="module_ipam_core"></a> [ipam\_core](#module\_ipam\_core) | ../../ | n/a |
 
 ## Resources
 
